@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Mavjud nashiriyotlar
+{% endblock %}
+
+{% block content %}
+    <br>
+    <a href="{% url 'add-publisher' %}">Add publisher</a>
+    <br>
+    <br>
+    {% for item in object_list  %}
+    <div>
+       <a href="{% url 'update-publisher' item.id %}">{{item}}</a> 
+    </div>
+    <br>
+    {% endfor %}
+{% endblock %}

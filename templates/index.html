@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Mavjud kitoblar
+{% endblock %}
+
+{% block content %}
+<div class="tm-main-content">
+    <section class="tm-margin-b-l">
+        <header>
+            <h2 class="tm-main-title">Welcome to our bookstore</h2>    
+        </header>
+        
+        <p>Shelf HTML template is provided by Tooplate. Please tell your friends about it. Thank you. Images are from Unsplash website. In tincidunt metus sed justo tincidunt sollicitudin. Curabitur magna tellus, condimentum vitae consectetur id, elementum sit amet erat.</p>
+        
+        <form action="" method="get">
+            Name of book: <input type="text" name="name__icontains"> 
+            Description of book: <input type="text" name="description__icontains" id="">
+            <input type="submit" value="Search">
+        </form>
+
+        <div>
+            <a href="{% url 'add-book' %}">Add book</a>
+        </div>
+
+        <div class="tm-gallery">
+            <div class="row">
+                {% for item in object_list %}
+                        <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+                            <a href="{% url 'view-book' item.id %}">
+                                <div class="tm-gallery-item-overlay">
+                                    {% if item.image %}
+                                    <img src="{{item.image.url}}" alt="{{item.name}}" class="img-fluid tm-img-center" width="220" height="340">
+                                    {% endif %}
+                                </div>
+                                
+                                <p class="tm-figcaption">{{item.name}}</p>
+                            </a>
+                        </figure>
+                    <br>
+                {% endfor %} 
+            </div>   
+        </div>
+        
+        <nav class="tm-gallery-nav">
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link active" href="#">1</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">2</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">3</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">4</a></li>                    
+            </ul>
+        </nav>
+    </section>
+
+    <section class="media tm-highlight tm-highlight-w-icon">
+
+        <div class="tm-highlight-icon">
+            <i class="fa tm-fa-6x fa-meetup"></i>    
+        </div>                    
+
+        <div class="media-body">
+            <header>
+                <h2>Need Help?</h2>
+            </header>
+            <p class="tm-margin-b">Curabitur magna tellus, condimentum vitae consectetur id, elementum sit amet erat. Phasellus arcu leo, sagittis fringilla nisi et, pulvinar vestibulum mi. Maecenas mollis ullamcorper est at dignissim.</p>
+            <a href="" class="tm-white-bordered-btn">Live Chat</a>
+        </div>                    
+    </section>
+</div>
+
+{% endblock %}
